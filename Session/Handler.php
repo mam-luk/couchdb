@@ -1,6 +1,6 @@
 <?php
 
-namespace Mamluk\Couch;
+namespace Mamluk\Couch\Session;
 
 use Illuminate\Http\Client\Factory;
 
