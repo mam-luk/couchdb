@@ -1,0 +1,20 @@
+{
+  "name": "mamluk/couchdb",
+  "type": "library",
+  "description": "A CouchDB Client and SessionHandler",
+  "license": "MIT",
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mamluk\\Couch\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "monolog/monolog": "^3.2",
+    "guzzlehttp/guzzle": "^7.4",
+    "illuminate/http": "^9.23"
+  }
+}
