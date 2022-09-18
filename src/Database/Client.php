@@ -52,7 +52,7 @@ class Client
      */
     public function __construct(string $user, string $password, string $database,
                                 string $host, Logger $log, Factory $httpClient = new Factory(), int $port = 5984,
-                                )
+    )
     {
         $this->http = $httpClient;
         $this->database = $database;
@@ -93,7 +93,7 @@ class Client
      * @param string $document JSON encoded string
      * @return void
      */
-    public function create(string $id, string $document)
+    public function create(string $id, string $document): bool
     {
         $r = $this->http->withBasicAuth($this->user, $this->password)
             ->withBody($document, 'application/json')
@@ -107,7 +107,7 @@ class Client
      * @param string $document JSON encoded string
      * @return void
      */
-    public function update(string $id, string $document, string $revision = null)
+    public function update(string $id, string $document, string $revision = null): bool
     {
         if ($revision === null) {
             $r = $this->http->withBasicAuth($this->user, $this->password)
