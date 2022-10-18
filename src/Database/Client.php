@@ -37,7 +37,7 @@ class Client
     /**
      * @var int
      */
-    private int $port;
+    private ?int $port;
 
     public Logger $log;
 
@@ -51,7 +51,7 @@ class Client
      * @param Factory $httpClient
      */
     public function __construct(string $user, string $password, string $database,
-                                string $host, Logger $log, Factory $httpClient = new Factory(), int|null $port = 5984,
+                                string $host, Logger $log, Factory $httpClient = new Factory(), ?int $port = 5984,
     )
     {
         $this->http = $httpClient;
@@ -67,10 +67,10 @@ class Client
     public function setDatabase(string $database): void
     {
         $this->database = $database;
-        if ($this->port !== null) {
-            $this->url = $this->host . ':' . $this->port . '/$database';
+        if ($this->port === null) {
+            $this->url = $this->host . '/' . $database;
         } else {
-            $this->url = $this->host . '/$database';
+            $this->url = $this->host . ':' . $this->port . '/' . $database;
         }
     }
 
