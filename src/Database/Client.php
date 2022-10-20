@@ -58,10 +58,10 @@ class Client
         $this->database = $database;
         $this->host = $host;
         $this->port = $port;
-        $this->url = "$host:$port/$database";
         $this->user = $user;
         $this->password = $password;
         $this->log = $log;
+        $this->setDatabase($database);
     }
 
     public function setDatabase(string $database): void
