@@ -86,7 +86,7 @@ class Client
             $dbCreated = $this->http->withBasicAuth($this->user, $this->password)
                 ->put($this->url);
 
-            return $dbCreated->status() === 201;
+            return $dbCreated->status() < 300;
         }
 
         return true;
@@ -103,7 +103,7 @@ class Client
             ->withBody($document, 'application/json')
             ->put($this->url . '/' . $id);
 
-        return $r->status() === 201;
+        return $r->status() < 300;
     }
 
     /**
@@ -125,7 +125,7 @@ class Client
             ->withBody($document, 'application/json')
             ->put($this->url . '/' . $id . '?rev=' . $revision);
 
-        return $r->status() === 201;
+        return $r->status() < 300;
     }
 
 
