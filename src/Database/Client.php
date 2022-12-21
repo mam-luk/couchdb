@@ -125,6 +125,10 @@ class Client
             ->withBody($document, 'application/json')
             ->put($this->url . '/' . $id . '?rev=' . $revision);
 
+        if ($r->status() > 299) {
+            $this->log->error('COUCHBASE ERROR: ' . $r->body());
+        }
+
         return $r->status() < 300;
     }
 
